@@ -61,9 +61,9 @@ namespace Hotel_Reservation_Manager.Controllers
             ViewBag.ReturnUrl = returnUrl;
             ApplicationDbContext db = new ApplicationDbContext();
 
-            if (db.Roles.SingleOrDefault(m => m.Name == "Администратор") == null)
+            if (db.Roles.SingleOrDefault(m => m.Name == "Admin") == null)
             {
-                db.Roles.Add(new IdentityRole { Name = "Администратор" });
+                db.Roles.Add(new IdentityRole { Name = "Admin" });
                 db.SaveChanges();
             }
             if (db.Roles.SingleOrDefault(m => m.Name == "Гост") == null)
@@ -72,22 +72,22 @@ namespace Hotel_Reservation_Manager.Controllers
                 db.SaveChanges();
             }
 
-            if (this.UserManager.FindByName("Администратор") == null)
+            if (this.UserManager.FindByName("Admin") == null)
             {
                 var user = new ApplicationUser
                 {
-                    UserName = "Администратор",
+                    UserName = "Admin",
                     Email = "admin@gmail.com",
                     PhoneNumber = "0875762964"
                 };
 
-                var role = db.Roles.Where(m => m.Name == "Администратор").FirstOrDefault();
+                var role = db.Roles.Where(m => m.Name == "Admin").FirstOrDefault();
                 
                 var result = await this.UserManager.CreateAsync(user, "Password");
                 if (result.Succeeded)
                 {
                     db.Users.SingleOrDefault(x => x.UserName == 
-                    "Администратор").Roles.Add(new IdentityUserRole { RoleId = role.Id });
+                    "Admin").Roles.Add(new IdentityUserRole { RoleId = role.Id });
                     db.SaveChanges();
                 }
             }

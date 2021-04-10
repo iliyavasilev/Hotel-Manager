@@ -30,10 +30,10 @@ namespace Hotel_Reservation_Manager.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Hotel_Reservation_Manager.Models.Guest> Guests { get; set; }
+        public System.Data.Entity.DbSet<Hotel_Reservation_Manager.Models.Users> Guests { get; set; }
 
         public System.Data.Entity.DbSet<Hotel_Reservation_Manager.Models.Room> Rooms { get; set; }
 
-        public System.Data.Entity.DbSet<Hotel_Reservation_Manager.Models.RoomUsage> RoomUsages { get; set; }
+        public System.Data.Entity.DbSet<Hotel_Reservation_Manager.Models.Reservations> RoomUsages { get; set; }
     }
 }

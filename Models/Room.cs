@@ -13,6 +13,7 @@ namespace Hotel_Reservation_Manager.Models
         public int Capacity { get; set; }
         public double PriceAdults { get; set; }
         public double PriceKids { get; set; }
+        public string Number { get; set; }
 
         public string[] Types => new string[] {"Две единични легла", "Апартамент", "Стая с двойно легло",
         "Пентхаус", "Мезонет"};
@@ -20,8 +21,8 @@ namespace Hotel_Reservation_Manager.Models
         //[NotMapped]
         //public virtual List<Room> Rooms => new ApplicationDbContext().Rooms.ToList();
 
-        public virtual List<RoomUsage> Usages => 
-            new ApplicationDbContext().RoomUsages.ToList().Where(x => x.RoomId == Id).ToList();
+       //public virtual List<Reservations> Usages => 
+       //    new ApplicationDbContext().RoomUsages.ToList().Where(x => x.RoomId == Id).ToList();
 
     }
 }

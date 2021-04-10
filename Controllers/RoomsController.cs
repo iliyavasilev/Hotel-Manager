@@ -37,7 +37,7 @@ namespace Hotel_Reservation_Manager.Controllers
         }
 
         // GET: Rooms/Create
-        [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -48,7 +48,7 @@ namespace Hotel_Reservation_Manager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create([Bind(Include = "Id,Type,Capacity,PriceAdults,PriceKids")] Room room)
         {
             if (ModelState.IsValid)
@@ -93,7 +93,7 @@ namespace Hotel_Reservation_Manager.Controllers
         }
 
         // GET: Rooms/Delete/5
-        [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -111,7 +111,7 @@ namespace Hotel_Reservation_Manager.Controllers
         // POST: Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Room room = await db.Rooms.FindAsync(id);

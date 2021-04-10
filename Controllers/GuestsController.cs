@@ -16,21 +16,21 @@ namespace Hotel_Reservation_Manager.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Guests
-        [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Guests.ToListAsync());
         }
 
         // GET: Guests/Details/5
-        [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guest guest = await db.Guests.FindAsync(id);
+            Users guest = await db.Guests.FindAsync(id);
             if (guest == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace Hotel_Reservation_Manager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,FirstName,Lastname,PhoneNUmber,Email,Adult")] Guest guest)
+        public async Task<ActionResult> Create([Bind(Include = "Id,FirstName,Lastname,PhoneNUmber,Email,Adult")] Users guest)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace Hotel_Reservation_Manager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guest guest = await db.Guests.FindAsync(id);
+            Users guest = await db.Guests.FindAsync(id);
             if (guest == null)
             {
                 return HttpNotFound();
@@ -82,7 +82,7 @@ namespace Hotel_Reservation_Manager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,Lastname,PhoneNUmber,Email,Adult")] Guest guest)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,Lastname,PhoneNUmber,Email,Adult")] Users guest)
         {
             if (ModelState.IsValid)
             {
@@ -94,14 +94,14 @@ namespace Hotel_Reservation_Manager.Controllers
         }
 
         // GET: Guests/Delete/5
-        [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guest guest = await db.Guests.FindAsync(id);
+            Users guest = await db.Guests.FindAsync(id);
             if (guest == null)
             {
                 return HttpNotFound();
@@ -111,11 +111,11 @@ namespace Hotel_Reservation_Manager.Controllers
 
         // POST: Guests/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Guest guest = await db.Guests.FindAsync(id);
+            Users guest = await db.Guests.FindAsync(id);
             db.Guests.Remove(guest);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

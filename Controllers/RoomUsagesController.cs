@@ -28,7 +28,7 @@ namespace Hotel_Reservation_Manager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RoomUsage roomUsage = await db.RoomUsages.FindAsync(id);
+            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
             if (roomUsage == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace Hotel_Reservation_Manager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,RoomId,GuestId,IsActive,Date")] RoomUsage roomUsage)
+        public async Task<ActionResult> Create([Bind(Include = "Id,RoomId,GuestId,IsActive,Date")] Reservations roomUsage)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Hotel_Reservation_Manager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RoomUsage roomUsage = await db.RoomUsages.FindAsync(id);
+            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
             if (roomUsage == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Hotel_Reservation_Manager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,RoomId,GuestId,IsActive,Date")] RoomUsage roomUsage)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,RoomId,GuestId,IsActive,Date")] Reservations roomUsage)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace Hotel_Reservation_Manager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RoomUsage roomUsage = await db.RoomUsages.FindAsync(id);
+            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
             if (roomUsage == null)
             {
                 return HttpNotFound();
@@ -112,7 +112,7 @@ namespace Hotel_Reservation_Manager.Controllers
         [Authorize(Roles = "Администратор")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            RoomUsage roomUsage = await db.RoomUsages.FindAsync(id);
+            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
             db.RoomUsages.Remove(roomUsage);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
