@@ -17,7 +17,7 @@ namespace Hotel_Reservation_Manager.Models
             return userIdentity;
         }
     }
-    //promenqm
+    //promenqmgo
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
