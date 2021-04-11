@@ -1,20 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Hotel_Reservation_Manager.Models
 {
+    //[Table("Reservations")]
     public class Reservations
     {
+        // public int Id { get; set; }
+        // public int RoomId { get; set; }
+         public int GuestId { get; set; }
+        // public bool IsActive { get; set; }
+        // public DateTime Date { get; set; }
+        [Key]
        // public int Id { get; set; }
        // public int RoomId { get; set; }
        // public string GuestId { get; set; }
-       // public bool IsActive { get; set; }
-       // public DateTime Date { get; set; }
+        public bool IsActive { get; set; }
+        
 
         [Required(ErrorMessage = "Room number is required")]
-        public string RoomNumber { get; set; }
+        public string RoomId { get; set; }
         public bool AllInclusive { get; set; }
         public bool BreakfastIncluded { get; set; }
         [DataType(DataType.Date)]

@@ -93,7 +93,7 @@ namespace Hotel_Reservation_Manager.Controllers
         }
 
         // GET: Rooms/Delete/5
-        [Authorize(Roles = "Admin")]
+       [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)

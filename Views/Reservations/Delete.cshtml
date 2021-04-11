@@ -1,0 +1,72 @@
+﻿@model Hotel_Reservation_Manager.Models.Reservations
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Reservations</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GuestId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuestId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AllInclusive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllInclusive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BreakfastIncluded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BreakfastIncluded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivealDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArrivealDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
