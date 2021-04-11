@@ -39,6 +39,11 @@ namespace Hotel_Reservation_Manager.Models
         public bool RememberMe { get; set; }
     }
 
+    public class RoomsViewMOdel
+    { 
+    
+    }
+
     public class ForgotViewModel
     {
         [Required]
@@ -68,6 +73,30 @@ namespace Hotel_Reservation_Manager.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "First Name")]
+        //[EmailAddress]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Surname")]
+        //[EmailAddress]
+        public string Surname { get; set; }
+
+        [Display(Name = "Last Name")]
+        //[EmailAddress]
+        public string LastName { get; set; }
+
+        [Display(Name = "Phone Number")]
+        //[EmailAddress]
+        public string PhoneNumber { get; set; }
+
+        [Display(Name = "EGN")]
+        //[EmailAddress]
+        public string EGN { get; set; }
+
+        [Display(Name = "Admin")]
+        public bool Admin { get; set; }
+
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

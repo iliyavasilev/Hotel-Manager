@@ -11,110 +11,107 @@ using Hotel_Reservation_Manager.Models;
 
 namespace Hotel_Reservation_Manager.Controllers
 {
-    public class RoomUsagesController : Controller
+    public class UsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: RoomUsages
+        // GET: Users
         public async Task<ActionResult> Index()
         {
-            return View(await db.RoomUsages.ToListAsync());
+            return View(await db.Guests.ToListAsync());
         }
 
-        // GET: RoomUsages/Details/5
+        // GET: Users/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
-            if (roomUsage == null)
+            Users users = await db.Guests.FindAsync(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(roomUsage);
+            return View(users);
         }
 
-        // GET: RoomUsages/Create
+        // GET: Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RoomUsages/Create
+        // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,RoomId,GuestId,IsActive,Date")] Reservations roomUsage)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Username,Password,FirstName,Surname,Lastname,EGN,Date,ReleaseDate,Active,PhoneNumber,Email,Admin")] Users users)
         {
             if (ModelState.IsValid)
             {
-                db.RoomUsages.Add(roomUsage);
-                //await db.SaveChangesAsync();
-                db.SaveChanges();
+                db.Guests.Add(users);
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(roomUsage);
+            return View(users);
         }
 
-        // GET: RoomUsages/Edit/5
+        // GET: Users/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
-            if (roomUsage == null)
+            Users users = await db.Guests.FindAsync(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(roomUsage);
+            return View(users);
         }
 
-        // POST: RoomUsages/Edit/5
+        // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,RoomId,GuestId,IsActive,Date")] Reservations roomUsage)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Username,Password,FirstName,Surname,Lastname,EGN,Date,ReleaseDate,Active,PhoneNumber,Email,Admin")] Users users)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(roomUsage).State = EntityState.Modified;
+                db.Entry(users).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(roomUsage);
+            return View(users);
         }
 
-        // GET: RoomUsages/Delete/5
-        [Authorize(Roles = "Администратор")]
+        // GET: Users/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
-            if (roomUsage == null)
+            Users users = await db.Guests.FindAsync(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(roomUsage);
+            return View(users);
         }
 
-        // POST: RoomUsages/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Администратор")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
-            db.RoomUsages.Remove(roomUsage);
+            Users users = await db.Guests.FindAsync(id);
+            db.Guests.Remove(users);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

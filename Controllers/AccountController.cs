@@ -66,9 +66,9 @@ namespace Hotel_Reservation_Manager.Controllers
                 db.Roles.Add(new IdentityRole { Name = "Admin" });
                 db.SaveChanges();
             }
-            if (db.Roles.SingleOrDefault(m => m.Name == "Гост") == null)
+            if (db.Roles.SingleOrDefault(m => m.Name == "Guest") == null)
             {
-                db.Roles.Add(new IdentityRole { Name = "Гост" });
+                db.Roles.Add(new IdentityRole { Name = "Guest" });
                 db.SaveChanges();
             }
 

@@ -171,14 +171,32 @@
     <Compile Include="Controllers\GuestsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\RoomUsagesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202104101847235_Initial.cs" />
     <Compile Include="Migrations\202104101847235_Initial.Designer.cs">
       <DependentUpon>202104101847235_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104101946092_EmptyMigration.cs" />
+    <Compile Include="Migrations\202104101946092_EmptyMigration.Designer.cs">
+      <DependentUpon>202104101946092_EmptyMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104110454232_NewMigration.cs" />
+    <Compile Include="Migrations\202104110454232_NewMigration.Designer.cs">
+      <DependentUpon>202104110454232_NewMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104110523368_New.cs" />
+    <Compile Include="Migrations\202104110523368_New.Designer.cs">
+      <DependentUpon>202104110523368_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104110527379_T2.cs" />
+    <Compile Include="Migrations\202104110527379_T2.Designer.cs">
+      <DependentUpon>202104110527379_T2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -257,11 +275,16 @@
     <Content Include="Views\Rooms\Details.cshtml" />
     <Content Include="Views\Rooms\Edit.cshtml" />
     <Content Include="Views\Rooms\Index.cshtml" />
-    <Content Include="Views\RoomUsages\Create.cshtml" />
-    <Content Include="Views\RoomUsages\Delete.cshtml" />
-    <Content Include="Views\RoomUsages\Details.cshtml" />
-    <Content Include="Views\RoomUsages\Edit.cshtml" />
-    <Content Include="Views\RoomUsages\Index.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\Details.cshtml" />
+    <Content Include="Views\Reservations\Edit.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -282,6 +305,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104101847235_Initial.resx">
       <DependentUpon>202104101847235_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104101946092_EmptyMigration.resx">
+      <DependentUpon>202104101946092_EmptyMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104110454232_NewMigration.resx">
+      <DependentUpon>202104110454232_NewMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104110523368_New.resx">
+      <DependentUpon>202104110523368_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104110527379_T2.resx">
+      <DependentUpon>202104110527379_T2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,110 +11,108 @@ using Hotel_Reservation_Manager.Models;
 
 namespace Hotel_Reservation_Manager.Controllers
 {
-    public class RoomUsagesController : Controller
+    public class ReservationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: RoomUsages
+        // GET: Reservations
         public async Task<ActionResult> Index()
         {
             return View(await db.RoomUsages.ToListAsync());
         }
 
-        // GET: RoomUsages/Details/5
-        public async Task<ActionResult> Details(int? id)
+        // GET: Reservations/Details/5
+        public async Task<ActionResult> Details(bool? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
-            if (roomUsage == null)
+            Reservations reservations = await db.RoomUsages.FindAsync(id);
+            if (reservations == null)
             {
                 return HttpNotFound();
             }
-            return View(roomUsage);
+            return View(reservations);
         }
 
-        // GET: RoomUsages/Create
+        // GET: Reservations/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RoomUsages/Create
+        // POST: Reservations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,RoomId,GuestId,IsActive,Date")] Reservations roomUsage)
+        public async Task<ActionResult> Create([Bind(Include = "IsActive,GuestId,RoomId,AllInclusive,BreakfastIncluded,ReleaseDate,ArrivealDate")] Reservations reservations)
         {
             if (ModelState.IsValid)
             {
-                db.RoomUsages.Add(roomUsage);
-                //await db.SaveChangesAsync();
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(roomUsage);
-        }
-
-        // GET: RoomUsages/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
-            if (roomUsage == null)
-            {
-                return HttpNotFound();
-            }
-            return View(roomUsage);
-        }
-
-        // POST: RoomUsages/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,RoomId,GuestId,IsActive,Date")] Reservations roomUsage)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(roomUsage).State = EntityState.Modified;
+                db.RoomUsages.Add(reservations);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(roomUsage);
+
+            return View(reservations);
         }
 
-        // GET: RoomUsages/Delete/5
-        [Authorize(Roles = "Администратор")]
-        public async Task<ActionResult> Delete(int? id)
+        // GET: Reservations/Edit/5
+        public async Task<ActionResult> Edit(bool? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
-            if (roomUsage == null)
+            Reservations reservations = await db.RoomUsages.FindAsync(id);
+            if (reservations == null)
             {
                 return HttpNotFound();
             }
-            return View(roomUsage);
+            return View(reservations);
         }
 
-        // POST: RoomUsages/Delete/5
+        // POST: Reservations/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "IsActive,GuestId,RoomId,AllInclusive,BreakfastIncluded,ReleaseDate,ArrivealDate")] Reservations reservations)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(reservations).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(reservations);
+        }
+
+        // GET: Reservations/Delete/5
+
+        public async Task<ActionResult> Delete(bool? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Reservations reservations = await db.RoomUsages.FindAsync(id);
+            if (reservations == null)
+            {
+                return HttpNotFound();
+            }
+            return View(reservations);
+        }
+
+        // POST: Reservations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Администратор")]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(bool id)
         {
-            Reservations roomUsage = await db.RoomUsages.FindAsync(id);
-            db.RoomUsages.Remove(roomUsage);
+            Reservations reservations = await db.RoomUsages.FindAsync(id);
+            db.RoomUsages.Remove(reservations);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
